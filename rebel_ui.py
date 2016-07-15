@@ -33,7 +33,7 @@ class Ui_MainWindow(object):
 		# super(Ui_MainWindow, self).__init__(parent)
 		# MainWindow = self
 		MainWindow.setObjectName("MainWindow")
-		MainWindow.resize(840, 600)
+		MainWindow.resize(840, 700)
 		
 		self.h_layout = QHBoxLayout()
 		self.centralwidget = CentralWidget(MainWindow)
@@ -82,11 +82,23 @@ class Ui_MainWindow(object):
 
 		self.motionTabs = QTabWidget()
 		self.motionTabs.setObjectName("motionTabs")
+
+		graphTab = QWidget()
+		graphTab.setObjectName("graphTab")
+		self.motionTabs.addTab(graphTab, "Graph")
+		graphCanvas = QWidget(graphTab)
+		graphCanvas.setGeometry(10, 10, 500, 200)
+		graphCanvas.setMinimumSize(QtCore.QSize(500, 0.5625*500))
+		graphCanvas.setStyleSheet("background-color: rgb(255,255,255); border:1px solid rgb(128,128,128);")
+
+		self.tab = QWidget()
+		self.tab.setObjectName("tab")
 		
-		self.motionPlotWidget = QWidget(self.motionTabs)
+		self.motionPlotWidget = QWidget(self.tab)
 		self.motionPlot = MyPlot(self.motionPlotWidget)
-		self.motionPlot.setGeometry(QtCore.QRect(0, 0, 570, 300))
+		self.motionPlot.setGeometry(QtCore.QRect(10, 0, 570, 230))
 		self.motionPlot.setObjectName("motionPlot")
+		self.motionTabs.addTab(self.tab, "Motion Plot")
 		# self.motionPlot.setSizePolicy(QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum))
 		# self.gridLayout.addWidget(self.motionPlot, 0, 0, 1, 1)
 		
@@ -102,7 +114,7 @@ class Ui_MainWindow(object):
 		self.channelGroup = QGroupBox(self.channelWidget)
 		self.channelGroup.setObjectName("channelGroup")
 		self.channelScrollArea = QScrollArea(self.channelGroup)
-		self.channelScrollArea.setGeometry(QtCore.QRect(0, 20, 107, 195))
+		self.channelScrollArea.setGeometry(QtCore.QRect(0, 20, 107, 500))
 		self.channelScrollArea.setFrameShape(QFrame.WinPanel)
 		self.channelScrollArea.setFrameShadow(QFrame.Sunken)
 		self.channelScrollArea.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
@@ -122,7 +134,7 @@ class Ui_MainWindow(object):
 		# self.hboxLayout.addWidget(self.motionTabs)
 		# self.hboxLayout.addWidget(self.channelGroup)
 		gridLayout.addWidget(self.motionTabs, 1, 0)
-		gridLayout.addWidget(self.channelGroup, 1, 1)
+		gridLayout.addWidget(self.channelGroup, 1, 1, 2, 1)
 		
 		# self.gridLayoutWidget = QWidget(self.mainTab_SignalProcessing)
 		# self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 0, 511, 251))
@@ -148,7 +160,7 @@ class Ui_MainWindow(object):
 		self.gridLayoutWidget_5.setObjectName("gridLayoutWidget_5")
 		
 		self.gridLayout_6 = QGridLayout(self.gridLayoutWidget_5)
-		self.gridLayout_6.setMargin(3)
+		# self.gridLayout_6.setMargin(3)
 		self.gridLayout_6.setObjectName("gridLayout_6")		
 		self.motionToolTabs = QTabWidget(self.gridLayoutWidget_5)
 		self.motionToolTabs.setObjectName("motionToolTabs")

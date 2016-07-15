@@ -38,7 +38,6 @@ class MyForm(QtGui.QMainWindow):
 	def resizeEvent(self,resizeEvent):
 		# QtGui.QMessageBox.information(self,"Information!","Window has been resized...")
 		self.ui.centralwidget.resize(resizeEvent.size().width(), resizeEvent.size().height())
-		self.ui.motionPlot.updateGeometry()
 		# print dir(resizeEvent.size())
 		# print "%s x %s" % (self.ui.centralwidget.width(), self.ui.centralwidget.height())
 		
@@ -93,7 +92,7 @@ class MyForm(QtGui.QMainWindow):
 		# self.setActionsMotionControls()
 		# self.setActionsMotionFile()
 		
-		# self.setTabActions()
+		self.setTabActions()
 		self.setToolbarActions()
 		# self.setActionsRobotState()
 		# self.setActionsChatUI()		
